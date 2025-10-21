@@ -6,7 +6,7 @@
 #include <arpa/inet.h>
 
 int main(int argc, char *argv[]) {
-	struct hostent *host;		// I'll try to figure this out lately
+	struct hostent *host;		// exploring this structure from shost1.c-shost2.c
 	struct in_addr **addr_list;	// same
 	int i;
 
@@ -25,9 +25,11 @@ int main(int argc, char *argv[]) {
 	}
 
 	addr_list = (struct in_addr **)host->h_addr_list;	// i think that here we do casting because of addr_list variable. What would be
-								// if we do not do the casting? I have to check this code.
+								// if we do not do the casting? I have to check this code. Code that is related
+								// to this are in shost2.c
+
 	for(i=0; addr_list[i] != NULL; i++) {
-		printf("%s\n", inet_ntoa(*addr_list[i]));	// we do * because addr_list[i] just address of *addr_list[]
+		printf("%s\n", inet_ntoa(*addr_list[i]));	// we do * because *addr_list[i] just address of *addr_list[]
 	}
 
 	// for(i=0; host->h_addr_list[i] != NULL; i++) {
