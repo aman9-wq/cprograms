@@ -18,8 +18,9 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	}
 
+	// socket configuration
 	servaddr.sin_port = htons(PORT);
-	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);	// i think that INADDR_ANY just contains random address
+	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);	// binds socket to all available interfaces(not just localhost). It is needed for bind
 	servaddr.sin_family = PF_INET;
 
 	s = bind(ssocket_fd, (struct sockaddr *)&servaddr, sizeof(servaddr));	// assigning a name to a socket
